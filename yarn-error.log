@@ -1,0 +1,75 @@
+Arguments: 
+  C:\Program Files\nodejs\node.exe C:\Users\Kemboi\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js
+
+PATH: 
+  C:\Program Files\PowerShell\7;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\Git\bin;C:\Program Files\nodejs\;C:\Users\Kemboi\.jdks\openjdk-19.0.1\bin;C:\MinGW\bin;C:\Program Files\Go\bin;C:\Users\Kemboi\AppData\Local\Programs\Python\Python311;C:\Users\Kemboi\AppData\Local\Programs\Python\Python311\Scripts;C:\flutter\bin;C:\Program Files\PowerShell\7\;C:\Users\Kemboi\.console-ninja\.bin;C:\Users\Kemboi\AppData\Local\Microsoft\WindowsApps;C:\Users\Kemboi\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\Kemboi\AppData\Roaming\npm;C:\Program Files\Docker Toolbox;C:\Users\Kemboi\go\bin;C:\xampp\php;C:\Users\Kemboi\AppData\Local\Android\Sdk\platform-tools;C:\Program Files (x86)\Nmap
+
+Yarn version: 
+  1.22.19
+
+Node version: 
+  18.12.0
+
+Platform: 
+  win32 x64
+
+Trace: 
+  Error: https://registry.yarnpkg.com/@mui/icons-material/-/icons-material-5.14.0.tgz: ESOCKETTIMEDOUT
+      at ClientRequest.<anonymous> (C:\Users\Kemboi\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:141517:19)
+      at Object.onceWrapper (node:events:627:28)
+      at ClientRequest.emit (node:events:513:28)
+      at TLSSocket.emitRequestTimeout (node:_http_client:838:9)
+      at Object.onceWrapper (node:events:627:28)
+      at TLSSocket.emit (node:events:525:35)
+      at Socket._onTimeout (node:net:562:8)
+      at listOnTimeout (node:internal/timers:564:17)
+      at process.processTimers (node:internal/timers:507:7)
+
+npm manifest: 
+  {
+    "name": "devcollab",
+    "version": "0.1.0",
+    "private": true,
+    "scripts": {
+      "dev": "cross-env NODE_OPTIONS=--max_old_space_size=4096 refine dev",
+      "build": "refine build",
+      "start": "refine start",
+      "lint": "eslint '**/*.{js,jsx,ts,tsx}'",
+      "refine": "refine"
+    },
+    "dependencies": {
+      "@refinedev/cli": "^2.5.1",
+      "@refinedev/core": "^4.5.8",
+      "@refinedev/nextjs-router": "^5.1.4",
+      "@refinedev/inferencer": "^4.0.0",
+      "@refinedev/kbar": "^1.1.0",
+      "next": "^13.0.6",
+      "nookies": "^2.5.2",
+      "react": "^18.0.0",
+      "react-dom": "^18.0.0",
+      "@refinedev/supabase": "^5.0.0",
+      "@refinedev/mui": "^5.0.0",
+      "@refinedev/react-hook-form": "^4.1.2",
+      "@mui/icons-material": "^5.8.3",
+      "@emotion/react": "^11.8.2",
+      "@emotion/styled": "^11.8.1",
+      "@mui/lab": "^5.0.0-alpha.85",
+      "@mui/material": "^5.8.6",
+      "@mui/x-data-grid": "^6.6.0",
+      "next-i18next": "^8.9.0"
+    },
+    "devDependencies": {
+      "@types/react": "^18.0.0",
+      "@types/react-dom": "^18.0.0",
+      "@types/node": "^12.20.11",
+      "@typescript-eslint/parser": "5.48.0",
+      "typescript": "^4.7.4",
+      "cross-env": "^7.0.3"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
