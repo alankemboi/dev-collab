@@ -8,7 +8,7 @@ import routerProvider, {
 } from "@refinedev/nextjs-router";
 import type { NextPage } from "next";
 import { AppProps } from "next/app";
-import { ColorModeContextProvider } from "@contexts";
+import { ColorModeContextProvider } from "src/contexts";
 import CssBaseline from "@mui/material/CssBaseline";
 import GlobalStyles from "@mui/material/GlobalStyles";
 import { dataProvider } from "@refinedev/supabase";
