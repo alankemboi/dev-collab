@@ -1,49 +1,50 @@
-# devcollab
+# Dev.Collab
 
-<div align="center" style="margin: 30px;">
-    <a href="https://refine.dev">
-    <img src="https://refine.ams3.cdn.digitaloceanspaces.com/refine_logo.png"  align="center" />
-    </a>
-</div>
-<br/>
+![Project Logo](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/28hutsw3mn4o0jnhy5te.png)
 
-This [refine](https://github.com/pankod/refine) project was generated with [superplate](https://github.com/pankod/refine).
+## Overview
+
+> Try out the live demo [here](https://collab.kemboi.app).
+>
+
+ Leveraging Next.js, Supabase, Refine, and Material-UI, this platform empowers users with a feature-rich collaborative experience.
+
+Created and maintained by [@rxbzes](https://twitter.com/rxbzes)
+
+## Key Features
+
+- **Real-time Collaboration**: See changes made by team members instantly, enabling smooth teamwork and enhanced productivity.
+
+- **Intuitive User Interface**: Built with Material-UI, the platform offers an intuitive and user-friendly interface, making collaboration easy for users of all skill levels.
+
+- **Tiptap Rich Text Editor**: Utilizing the powerful Tiptap editor, users can create, format, and share rich content collaboratively.
 
 ## Getting Started
 
-**refine** is a React-based framework for building data-intensive applications in no time ✨
+### Prerequisites
 
-Refine offers lots of out-of-the box functionality for rapid development, without compromising extreme customizability. Use-cases include, but are not limited to admin panels, B2B applications and dashboards.
+- Node.js and npm installed on your machine.
 
-## Available Scripts
+### Installation
 
-### Running the development server.
+1. Clone the repository: `git clone https://github.com/alankemboi/dev-collab.git`
+2. Navigate to the project folder: `cd dev-collab`
+3. Install dependencies: `yarn install`
 
-```bash
-    npm run dev
-```
+### Usage
 
-### Building for production.
+1. Start the development server: `yarn dev`
+2. Access the platform at: `http://localhost:3000`
+3. Create an account or log in to start collaborating.
 
-```bash
-    npm run build
-```
+## Contributing
 
-### Running the production server.
-
-```bash
-    npm run start
-```
-
-## Learn More
-
-To learn more about **refine**, please check out the [Documentation](https://refine.dev/docs)
-
-- **Supabase Data Provider** [Docs](https://refine.dev/docs/core/providers/data-provider/#overview)
-- **Material UI** [Docs](https://refine.dev/docs/ui-frameworks/mui/tutorial/)
-- **Inferencer** [Docs](https://refine.dev/docs/packages/documentation/inferencer)
-- **i18n** [Docs](https://refine.dev/docs/core/providers/i18n-provider/)
+Support it by joining stargazers for this repository. ⭐
+Also follow me for my next creations! 🤩
 
 ## License
 
-MIT
+This project is licensed under the Apache License Version 2.0. For more details, see the [LICENSE](LICENSE) file.
+
+## TroubleShooting
+Check URL [here](https://collab.kemboi.app/document/4kQaCrt6PcRUK_QcAzT3TIMtfLeAUiLC/edit) 
