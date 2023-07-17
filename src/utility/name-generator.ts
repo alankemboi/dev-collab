@@ -7,8 +7,15 @@ const getVersionNumber = () =>
 const getMkNumeral = () =>
   "Mk " + romanNumeral(Math.floor(Math.random() * 100 + 1));
 
+type RomanNumerals = {
+  [key: string]: number;
+};
+
+type Vowel = {
+  [key: string]: string[];
+};
 const romanNumeral = (number: any) => {
-  const numerals = {
+  const numerals: RomanNumerals = {
     M: 1000,
     CM: 900,
     D: 500,
@@ -38,7 +45,7 @@ const romanNumeral = (number: any) => {
 };
 
 const nameGenerator = () => {
-  let vowels = {
+  let vowels: Vowel = {
       "1": [
         "b",
         "c",
