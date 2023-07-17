@@ -16,7 +16,6 @@ import { appWithTranslation, useTranslation } from "next-i18next";
 import { authProvider } from "src/authProvider";
 import { supabaseClient } from "src/utility";
 import { MainHeader } from "@components/header/header";
-import { Head } from "next/document";
 
 export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
   noLayout?: boolean;
@@ -33,9 +32,6 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout): JSX.Element {
     }
     return (
       <>
-        <Head>
-          <title>Dev.Collab</title>
-        </Head>
         <MainHeader search acc />
         <Component {...pageProps} />
       </>
@@ -52,7 +48,7 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout): JSX.Element {
 
   return (
     <>
-      {/* <GitHubBanner /> */}
+      <GitHubBanner />
       <RefineKbarProvider>
         <ColorModeContextProvider>
           <CssBaseline />
