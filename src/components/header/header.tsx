@@ -123,11 +123,7 @@ export function MainHeader({ search, acc }: { search: Boolean; acc: Boolean }) {
     setShareOpen(false);
     setSelectedValue(value);
   };
-  const { data: user } = useDataProvider();
-  const email = user?.name;
-  const Av = email?.substring(0, 2);
-  console.log("U", user?.name, Av);
-
+  
   const router = useRouter();
   const { pathname } = router;
 
