@@ -16,7 +16,7 @@ type handler =
   | undefined;
 
 const customTitleHandler: handler = ({ resource, action }) => {
-  let title = "Collab"; // Default title
+  let title = "Dev.Collab"; // Default title
 
   if (resource && action) {
     title = `${capitalize(action)} ${capitalize(resource.name)} | Collab`;
