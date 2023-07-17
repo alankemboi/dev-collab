@@ -14,14 +14,9 @@ import {
   TextField,
 } from "@mui/material";
 import { MainHeader } from "@components/header/header";
-import { GetServerSideProps } from "next";
-import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import customTitleHandler from "src/utility/customTitleHandler";
 import { EditorWrapper } from "@components/editor";
-import { authProvider } from "src/authProvider";
 import React from "react";
 import { Comment } from "@mui/icons-material";
-import { ShareDialog } from "@components/share-dialog";
 
 const CommentButtonWrapper = styled(IconButton)(({ theme }) => ({
   position: "fixed",
@@ -171,27 +166,3 @@ export default function DocumentEditPage() {
 }
 
 DocumentEditPage.noLayout = true;
-
-export const getServerSideProps: GetServerSideProps<{}> = async (context) => {
-  const { authenticated } = await authProvider.check(context);
-
-  const translateProps = await serverSideTranslations(context.locale ?? "en", [
-    "common",
-  ]);
-
-  if (authenticated) {
-    return {
-      props: {},
-      redirect: {
-        destination: `/document`,
-        permanent: false,
-      },
-    };
-  }
-
-  return {
-    props: {
-      ...translateProps,
-    },
-  };
-};

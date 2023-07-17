@@ -125,6 +125,7 @@ export function MainHeader({ search, acc }: { search: Boolean; acc: Boolean }) {
   };
 
   const router = useRouter();
+  const { pathname } = router;
 
   const handleDrawerClose = () => {
     setOpen(false);
@@ -152,7 +153,9 @@ export function MainHeader({ search, acc }: { search: Boolean; acc: Boolean }) {
   const dataProvider = useDataProvider();
   const createNewDoc = async (e: any) => {
     const docSlugId = nanoid(32);
-    router.push(`document/${docSlugId}/edit/`);
+    if (pathname === "/document") {
+      router.push(`document/${docSlugId}/edit/`);
+    }
   };
   const shareDocument = async (e: any) => {
     const docSlugId = nanoid(32);
@@ -163,8 +166,6 @@ export function MainHeader({ search, acc }: { search: Boolean; acc: Boolean }) {
       <Grid item>
         <Stack direction="row" spacing={1}>
           <Avatar sx={{ width: 32, height: 32, fontSize: 12 }}>ME</Avatar>
-          <Avatar sx={{ width: 32, height: 32, fontSize: 12 }}>HR</Avatar>
-          <Avatar sx={{ width: 32, height: 32, fontSize: 12 }}>JS</Avatar>
         </Stack>
       </Grid>
       {/* First Button */}
