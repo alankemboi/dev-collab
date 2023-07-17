@@ -1,7 +1,7 @@
-import { NavigateToResource } from "@refinedev/nextjs-router";
+import { MainSec } from "@components/main-section";
 
 export default function Home() {
-  return <NavigateToResource resource="blog_posts" />;
+  return <MainSec />;
 }
 
 Home.noLayout = true;

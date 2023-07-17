@@ -1,5 +1,5 @@
 import { AuthPage, ThemedTitleV2 } from "@refinedev/mui";
-
+import { Button } from "@mui/material";
 import { GetServerSideProps } from "next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
@@ -19,6 +19,17 @@ export default function Login() {
       title={
         <ThemedTitleV2 collapsed={false} text="DevCollab" icon={<AppIcon />} />
       }
+      wrapperProps={{
+        style: {
+          background: "rgb(248 250 252/1)",
+        },
+      }}
+      providers={[
+        {
+          name: "github",
+          label: "Sign in with GitHub",
+        },
+      ]}
     />
   );
 }
@@ -36,7 +47,7 @@ export const getServerSideProps: GetServerSideProps<{}> = async (context) => {
     return {
       props: {},
       redirect: {
-        destination: `/`,
+        destination: `/document`,
         permanent: false,
       },
     };

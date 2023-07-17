@@ -1,6 +1,7 @@
 import { ColorModeContext } from "@contexts";
 import DarkModeOutlined from "@mui/icons-material/DarkModeOutlined";
 import LightModeOutlined from "@mui/icons-material/LightModeOutlined";
+import { AvatarGroup } from "@mui/material";
 import AppBar from "@mui/material/AppBar";
 import Avatar from "@mui/material/Avatar";
 import FormControl from "@mui/material/FormControl";
@@ -15,6 +16,7 @@ import { HamburgerMenu, RefineThemedLayoutV2HeaderProps } from "@refinedev/mui";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useContext } from "react";
+import { authProvider } from "src/authProvider";
 
 interface IUser {
   name: string;
@@ -30,7 +32,7 @@ export const Header: React.FC<RefineThemedLayoutV2HeaderProps> = ({
   const { data: user } = useGetIdentity<IUser>();
 
   return (
-    <AppBar position={sticky ? "sticky" : "relative"}>
+    <AppBar position={sticky ? "sticky" : "relative"} sx={{ width: "100%" }}>
       <Toolbar>
         <Stack direction="row" width="100%" alignItems="center">
           <HamburgerMenu />
@@ -122,7 +124,11 @@ export const Header: React.FC<RefineThemedLayoutV2HeaderProps> = ({
                     {user?.name}
                   </Typography>
                 )}
-                <Avatar src={user?.avatar} alt={user?.name} />
+                <AvatarGroup max={3}>
+                  <Avatar src={user?.avatar} alt={user?.name} />
+                  <Avatar src={user?.avatar} alt={user?.name} />
+                  <Avatar src={user?.avatar} alt={user?.name} />
+                </AvatarGroup>
               </Stack>
             )}
           </Stack>
