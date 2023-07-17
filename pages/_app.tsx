@@ -16,6 +16,7 @@ import { appWithTranslation, useTranslation } from "next-i18next";
 import { authProvider } from "src/authProvider";
 import { supabaseClient } from "src/utility";
 import { MainHeader } from "@components/header/header";
+import { useRouter } from "next/router";
 
 export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
   noLayout?: boolean;
@@ -45,10 +46,12 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout): JSX.Element {
     changeLocale: (lang: string) => i18n.changeLanguage(lang),
     getLocale: () => i18n.language,
   };
+  const router = useRouter();
+  const { pathname } = router;
 
   return (
     <>
-      <GitHubBanner />
+      {pathname === "/" && <GitHubBanner />}
       <RefineKbarProvider>
         <ColorModeContextProvider>
           <CssBaseline />
