@@ -153,7 +153,7 @@ export default function DocumentEditPage() {
                   <ListItemIcon>
                     <AvatarWrapper>TD</AvatarWrapper>
                   </ListItemIcon>
-                  <ListItemText primary="Join" secondary={currentTime} />
+                  <ListItemText primary="@kemboi" secondary={currentTime} />
                 </ListItem>
                 <ListItem>Hi</ListItem>
               </List>

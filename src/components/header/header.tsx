@@ -44,6 +44,7 @@ import { useDataProvider } from "@refinedev/core";
 import { authProvider } from "src/authProvider";
 import { ShareDialog } from "@components/share-dialog";
 import { supabaseClient } from "src/utility";
+
 interface IUser {
   id: string;
   name: string;
@@ -102,8 +103,7 @@ export function MainHeader({ search, acc }: { search: Boolean; acc: Boolean }) {
     React.useState<null | HTMLElement>(null);
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
-  const { data: user } = useGetIdentity<IUser>();
-  console.log("user", user);
+  // const { data: user } = useGetIdentity<IUser>();
   const handleDrawerOpen = () => {
     setOpen(true);
   };
@@ -123,6 +123,10 @@ export function MainHeader({ search, acc }: { search: Boolean; acc: Boolean }) {
     setShareOpen(false);
     setSelectedValue(value);
   };
+  const { data: user } = useDataProvider();
+  const email = user?.name;
+  const Av = email?.substring(0, 2);
+  console.log("U", user?.name, Av);
 
   const router = useRouter();
   const { pathname } = router;
@@ -150,7 +154,7 @@ export function MainHeader({ search, acc }: { search: Boolean; acc: Boolean }) {
   const handleMobileMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
     setMobileMoreAnchorEl(event.currentTarget);
   };
-  const dataProvider = useDataProvider();
+
   const createNewDoc = async (e: any) => {
     const docSlugId = nanoid(32);
     if (pathname === "/document") {
@@ -269,23 +273,11 @@ export function MainHeader({ search, acc }: { search: Boolean; acc: Boolean }) {
     >
       <MenuItem>
         <IconButton size="large" aria-label="show 4 new mails" color="inherit">
-          <Badge badgeContent={4} color="error">
-            <MailIcon />
-          </Badge>
+          <Stack direction="row" spacing={1}>
+            <Avatar sx={{ width: 32, height: 32, fontSize: 12 }}>ME</Avatar>
+          </Stack>
         </IconButton>
-        <p>Messages</p>
-      </MenuItem>
-      <MenuItem>
-        <IconButton
-          size="large"
-          aria-label="show 17 new notifications"
-          color="inherit"
-        >
-          <Badge badgeContent={17} color="error">
-            <NotificationsIcon />
-          </Badge>
-        </IconButton>
-        <p>Notifications</p>
+        <p>Account</p>
       </MenuItem>
       <MenuItem onClick={handleProfileMenuOpen}>
         <IconButton
@@ -295,9 +287,9 @@ export function MainHeader({ search, acc }: { search: Boolean; acc: Boolean }) {
           aria-haspopup="true"
           color="inherit"
         >
-          <AccountCircle />
+          <PlusIcon />
         </IconButton>
-        <p>Profile</p>
+        <p>New</p>
       </MenuItem>
     </Menu>
   );

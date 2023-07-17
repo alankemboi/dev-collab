@@ -1,6 +1,6 @@
 import { GitHubBanner, Refine } from "@refinedev/core";
 import { RefineKbar, RefineKbarProvider } from "@refinedev/kbar";
-import "src/styles/app.css";
+import "src/styles/globals.scss";
 import { notificationProvider, RefineSnackbarProvider } from "@refinedev/mui";
 import routerProvider, {
   DocumentTitleHandler,
@@ -20,7 +20,6 @@ import { useRouter } from "next/router";
 import { GetServerSideProps } from "next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import customTitleHandler from "src/utility/customTitleHandler";
-
 export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
   noLayout?: boolean;
 };
