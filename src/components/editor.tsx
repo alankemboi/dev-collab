@@ -42,6 +42,10 @@ export const EditorWrapper = () => {
   }, []);
   useEffect(() => {
     const provider = new WebrtcProvider("collab-demo", yDoc);
+    // Trigger a web socket connection to the signaling server
+    fetch("create-doc", { method: "GET" }).then((res) => {
+      console.log(res);
+    });
     setProvider(provider);
     return () => {
       provider?.destroy();
