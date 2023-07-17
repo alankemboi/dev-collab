@@ -91,7 +91,7 @@ const Editor: FC<IEditorProps> = ({ yDoc, provider }) => {
           "prose prose-sm sm:prose lg:prose-lg xl:prose-2xl m-5 focus:outline-none prose-stone h-[50vh] bg-white overflow-scroll mx-0 mt-8 rounded-lg border px-4 py-3",
       },
     },
-    content: "",
+    content: "<h1>Start typing here... 🌍</h1>",
   });
 
   const setName = useCallback(() => {

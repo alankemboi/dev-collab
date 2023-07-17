@@ -12,8 +12,8 @@ export default function Login() {
       type="login"
       formProps={{
         defaultValues: {
-          email: "info@refine.dev",
-          password: "refine-supabase",
+          email: "bk.b@kemboi.app",
+          password: "no-reply-kemboi",
         },
       }}
       title={
@@ -24,12 +24,6 @@ export default function Login() {
           background: "rgb(248 250 252/1)",
         },
       }}
-      providers={[
-        {
-          name: "github",
-          label: "Sign in with GitHub",
-        },
-      ]}
     />
   );
 }
