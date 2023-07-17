@@ -25,7 +25,7 @@ export const authProvider: AuthBindings = {
 
       return {
         success: true,
-        redirectTo: "/",
+        redirectTo: "/document",
       };
     }
 
@@ -71,7 +71,7 @@ export const authProvider: AuthBindings = {
       if (data) {
         return {
           success: true,
-          redirectTo: "/",
+          redirectTo: "/document",
         };
       }
     } catch (error: any) {
