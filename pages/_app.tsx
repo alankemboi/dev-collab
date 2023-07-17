@@ -17,6 +17,9 @@ import { authProvider } from "src/authProvider";
 import { supabaseClient } from "src/utility";
 import { MainHeader } from "@components/header/header";
 import { useRouter } from "next/router";
+import { GetServerSideProps } from "next";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import customTitleHandler from "src/utility/customTitleHandler";
 
 export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
   noLayout?: boolean;
@@ -72,7 +75,7 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout): JSX.Element {
               {renderComponent()}
               <RefineKbar />
               <UnsavedChangesNotifier />
-              <DocumentTitleHandler />
+              <DocumentTitleHandler handler={customTitleHandler} />
             </Refine>
           </RefineSnackbarProvider>
         </ColorModeContextProvider>
@@ -82,3 +85,27 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout): JSX.Element {
 }
 
 export default appWithTranslation(MyApp);
+
+export const getServerSideProps: GetServerSideProps<{}> = async (context) => {
+  const { authenticated } = await authProvider.check(context);
+
+  const translateProps = await serverSideTranslations(context.locale ?? "en", [
+    "common",
+  ]);
+
+  if (authenticated) {
+    return {
+      props: {},
+      redirect: {
+        destination: `/document`,
+        permanent: false,
+      },
+    };
+  }
+
+  return {
+    props: {
+      ...translateProps,
+    },
+  };
+};

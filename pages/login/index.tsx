@@ -21,7 +21,7 @@ export default function Login() {
       }
       wrapperProps={{
         style: {
-          background: "rgb(248 250 252/1)",
+          background: "rgb(248 250 252)",
         },
       }}
     />
