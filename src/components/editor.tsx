@@ -12,6 +12,8 @@ import nameGenerator from "src/utility/name-generator";
 import { RichTextEditor, Link } from "@mantine/tiptap";
 import StarterKit from "@tiptap/starter-kit";
 import { Chip, Container } from "@mui/material";
+import FaceIcon from "@mui/icons-material/Face";
+
 import React, { FC, useCallback, useEffect, useMemo, useState } from "react";
 import * as Y from "yjs";
 
@@ -73,7 +75,7 @@ const websocketProvider = new TiptapCollabProvider({
 });
 
 const getInitialUser = () => {
-  const users = JSON.parse(localStorage.getItem("currentUser"));
+  const users = JSON.parse(localStorage.getItem("currentUser")!);
   return (
     users || {
       name: getRandomName(),
@@ -129,30 +131,6 @@ const Editor: FC<IEditorProps> = ({ yDoc, provider }) => {
   );
   const [status, setStatus] = useState("connecting");
   const [currentUser, setCurrentUser] = useState(getInitialUser);
-
-  // const editor = useEditor({
-  //   extensions: [
-  //     StarterKit,
-  //     CollaborationCursor.configure({
-  //       provider,
-  //       onUpdate: (updatedUsers) => {
-  //         setUsers(updatedUsers);
-  //         return null;
-  //       },
-  //       user: currentUser,
-  //     }),
-  //     Collaboration.configure({
-  //       document: yDoc,
-  //     }),
-  //   ],
-  //   editorProps: {
-  //     attributes: {
-  //       class:
-  //         "prose prose-sm sm:prose lg:prose-lg xl:prose-2xl m-5 focus:outline-none prose-stone h-[50vh] bg-white overflow-scroll mx-0 mt-8 rounded-lg border px-4 py-3",
-  //     },
-  //   },
-  //   content: "",
-  // });
 
   const editor = useEditor({
     extensions: [
@@ -217,7 +195,7 @@ const Editor: FC<IEditorProps> = ({ yDoc, provider }) => {
         <div className={`editor__status editor__status--${status}`}>
           <Chip label={status} variant="filled" />
         </div>
-        <Chip label={currentUser.name} variant="filled" />
+        <Chip icon={<FaceIcon />} label={currentUser.name} variant="filled" />
       </div>
       <Container
         sx={{

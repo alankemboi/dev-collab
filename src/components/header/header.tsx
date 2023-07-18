@@ -104,23 +104,13 @@ export function MainHeader({ search, acc }: { search: Boolean; acc: Boolean }) {
     React.useState<null | HTMLElement>(null);
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
-  const [allUsers, setAllUsers] = React.useState();
+  const [currentUser, setUser] = React.useState<any>(null);
 
   React.useEffect(() => {
-    // Function to get items from localStorage
-    const getItemsFromLocalStorage = () => {
-      const localStorageItems = localStorage.getItem("currentUser");
-      if (localStorageItems) {
-        setAllUsers(JSON.parse(localStorageItems));
-      }
-    };
-
-    getItemsFromLocalStorage();
-  }, [allUsers]);
-  // const { color, name } = allUsers[0];
-
-  if (allUsers) console.log(allUsers);
-
+    const currentUser = JSON.parse(localStorage.getItem("currentUser")!);
+    setUser(currentUser);
+  }, []);
+  console.log(currentUser);
   // const { data: user } = useGetIdentity<IUser>();
   const handleDrawerOpen = () => {
     setOpen(true);
