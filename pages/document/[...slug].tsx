@@ -95,21 +95,7 @@ export default function DocumentEditPage() {
           padding: "16px",
         }}
       >
-        <Container
-          sx={{
-            backgroundColor: "white",
-            width: "210mm",
-            height: "297mm",
-            padding: "24px",
-            display: "flex",
-            flexDirection: "column",
-            border: "1px solid #cacaca",
-            gap: "24px",
-            mb: "24px",
-          }}
-        >
-          <EditorWrapper />
-        </Container>
+        <EditorWrapper />
         <CommentButtonWrapper
           aria-label="Scroll to top"
           size="medium"
@@ -117,7 +103,6 @@ export default function DocumentEditPage() {
         >
           <Comment />
         </CommentButtonWrapper>
-
         {open && (
           <>
             {/* <AddCommenWrapper>

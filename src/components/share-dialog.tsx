@@ -17,6 +17,7 @@ import { DialogContent } from "@mui/material";
 import { IconButton, InputAdornment, TextField, Tooltip } from "@mui/material";
 import { FileCopy } from "@mui/icons-material";
 import { LinkOffOutlined } from "@mui/icons-material";
+import { useRouter } from "next/router";
 
 export interface SimpleDialogProps {
   open: boolean;
@@ -30,17 +31,12 @@ export function ShareDialog(props: SimpleDialogProps) {
   const inputRef = React.useRef<HTMLInputElement | null>(null);
   const [copied, setCopied] = React.useState(false);
 
-  const [slug, setSlug] = React.useState("");
+  const router = useRouter();
+  const { slug } = router.query;
 
-  React.useEffect(() => {
-    const url = new URL(window.location.href);
-    const pathname = url.pathname;
-    const parts = pathname.split("/");
-    const extractedSlug = parts[2];
-
-    setSlug(extractedSlug);
-  }, []);
-
+  // Ensure slug is an array and get the first element (path after domain)
+  const pathAfterDomain = Array.isArray(slug) ? slug[1] : "";
+  // console.log(slug);
   const handleCopy = () => {
     if (inputRef && inputRef.current) {
       inputRef?.current.select();
@@ -77,7 +73,7 @@ export function ShareDialog(props: SimpleDialogProps) {
               fullWidth
               inputRef={inputRef}
               sx={{ border: 0 }}
-              value={`https://collab.kemboi.app/${slug}/edit`}
+              value={`https://collab.kemboi.app/${1}}/edit`}
               InputProps={{
                 endAdornment: (
                   <InputAdornment position="end">

@@ -7,7 +7,7 @@ export default function DocumentEditPage() {
   return (
     <>
       <MainHeader search={false} acc />
-      <Container
+      {/* <Container
         maxWidth={false}
         sx={{
           width: "100%",
@@ -18,23 +18,9 @@ export default function DocumentEditPage() {
           alignItems: "start",
           padding: "16px",
         }}
-      >
-        <Container
-          sx={{
-            backgroundColor: "white",
-            width: "210mm",
-            height: "297mm",
-            padding: "24px",
-            display: "flex",
-            flexDirection: "column",
-            border: "1px solid #cacaca",
-            gap: "24px",
-            mb: "24px",
-          }}
-        >
-          <EditorWrapper />
-        </Container>
-      </Container>
+      > */}
+      <EditorWrapper />
+      {/* </Container> */}
     </>
   );
 }

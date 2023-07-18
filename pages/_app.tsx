@@ -1,3 +1,4 @@
+import * as React from "react";
 import { GitHubBanner, Refine } from "@refinedev/core";
 import { RefineKbar, RefineKbarProvider } from "@refinedev/kbar";
 import "src/styles/globals.scss";
@@ -17,8 +18,8 @@ import { authProvider } from "src/authProvider";
 import { supabaseClient } from "src/utility";
 import { MainHeader } from "@components/header/header";
 import { useRouter } from "next/router";
-import { GetServerSideProps } from "next";
-import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import useMediaQuery from "@mui/material/useMediaQuery";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
 import customTitleHandler from "src/utility/customTitleHandler";
 export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
   noLayout?: boolean;
@@ -29,15 +30,27 @@ type AppPropsWithLayout = AppProps & {
 };
 
 function MyApp({ Component, pageProps }: AppPropsWithLayout): JSX.Element {
+  const prefersDarkMode = useMediaQuery("(prefers-color-scheme: light)");
+
+  const theme = React.useMemo(
+    () =>
+      createTheme({
+        palette: {
+          mode: prefersDarkMode ? "light" : "light",
+        },
+      }),
+    [prefersDarkMode]
+  );
+
   const renderComponent = () => {
     if (Component.noLayout) {
       return <Component {...pageProps} />;
     }
     return (
-      <>
+      <ThemeProvider theme={theme}>
         <MainHeader search acc />
         <Component {...pageProps} />
-      </>
+      </ThemeProvider>
     );
   };
 
@@ -84,27 +97,3 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout): JSX.Element {
 }
 
 export default appWithTranslation(MyApp);
-
-export const getServerSideProps: GetServerSideProps<{}> = async (context) => {
-  const { authenticated } = await authProvider.check(context);
-
-  const translateProps = await serverSideTranslations(context.locale ?? "en", [
-    "common",
-  ]);
-
-  if (authenticated) {
-    return {
-      props: {},
-      redirect: {
-        destination: `/document`,
-        permanent: false,
-      },
-    };
-  }
-
-  return {
-    props: {
-      ...translateProps,
-    },
-  };
-};

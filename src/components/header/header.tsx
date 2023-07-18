@@ -44,6 +44,7 @@ import { useDataProvider } from "@refinedev/core";
 import { authProvider } from "src/authProvider";
 import { ShareDialog } from "@components/share-dialog";
 import { supabaseClient } from "src/utility";
+import { createShade } from "src/utility/create-shade";
 
 interface IUser {
   id: string;
@@ -103,6 +104,23 @@ export function MainHeader({ search, acc }: { search: Boolean; acc: Boolean }) {
     React.useState<null | HTMLElement>(null);
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
+  const [allUsers, setAllUsers] = React.useState();
+
+  React.useEffect(() => {
+    // Function to get items from localStorage
+    const getItemsFromLocalStorage = () => {
+      const localStorageItems = localStorage.getItem("currentUser");
+      if (localStorageItems) {
+        setAllUsers(JSON.parse(localStorageItems));
+      }
+    };
+
+    getItemsFromLocalStorage();
+  }, [allUsers]);
+  // const { color, name } = allUsers[0];
+
+  if (allUsers) console.log(allUsers);
+
   // const { data: user } = useGetIdentity<IUser>();
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -123,7 +141,7 @@ export function MainHeader({ search, acc }: { search: Boolean; acc: Boolean }) {
     setShareOpen(false);
     setSelectedValue(value);
   };
-  
+
   const router = useRouter();
   const { pathname } = router;
 
@@ -157,57 +175,70 @@ export function MainHeader({ search, acc }: { search: Boolean; acc: Boolean }) {
       router.push(`document/${docSlugId}/edit/`);
     }
   };
-  const shareDocument = async (e: any) => {
-    const docSlugId = nanoid(32);
-    router.push(`document/${docSlugId}/edit/`);
+
+  const ActionButtons = () => {
+    return (
+      <Grid container spacing={2} justifyContent="center">
+        <Grid item>
+          <Stack direction="row" spacing={1}>
+            <Avatar
+              sx={{
+                width: 32,
+                height: 32,
+                fontSize: 12,
+                backgroundColor: "teal",
+                border: `2px solid ${createShade("#FF0000", 0.1)}`,
+              }}
+            >
+              ME
+            </Avatar>
+          </Stack>
+        </Grid>
+        {/* First Button */}
+        <Grid item>
+          <Button
+            // variant="outlined"
+            sx={{
+              color: "rgb(51 65 85)",
+              background: "#fff",
+              whiteSpace: "no-wrap",
+              fontSize: 13,
+              border: "1px solid #ededed",
+              textTransform: "none",
+            }}
+            onClick={handleClickOpen}
+            endIcon={<InviteIcon />}
+          >
+            <span
+              style={{ display: "flex", alignItems: "center", fontSize: 13 }}
+            >
+              Share
+            </span>
+          </Button>
+        </Grid>
+        {/* Second Button */}
+        <Grid item>
+          <Button
+            variant="contained"
+            color="secondary"
+            sx={{
+              backgroundImage: "linear-gradient(to bottom,#6366f1,#4f46e5)",
+              boxShadow: "0 0 #0000",
+              textTransform: "none",
+            }}
+            onClick={createNewDoc}
+            endIcon={<PlusIcon />}
+          >
+            <span
+              style={{ display: "flex", alignItems: "center", fontSize: 13 }}
+            >
+              New
+            </span>
+          </Button>
+        </Grid>
+      </Grid>
+    );
   };
-  const ActionButtons = () => (
-    <Grid container spacing={2} justifyContent="center">
-      <Grid item>
-        <Stack direction="row" spacing={1}>
-          <Avatar sx={{ width: 32, height: 32, fontSize: 12 }}>ME</Avatar>
-        </Stack>
-      </Grid>
-      {/* First Button */}
-      <Grid item>
-        <Button
-          // variant="outlined"
-          sx={{
-            color: "rgb(51 65 85)",
-            background: "#fff",
-            whiteSpace: "no-wrap",
-            fontSize: 13,
-            border: "1px solid #ededed",
-            textTransform: "none",
-          }}
-          onClick={handleClickOpen}
-          endIcon={<InviteIcon />}
-        >
-          <span style={{ display: "flex", alignItems: "center", fontSize: 13 }}>
-            Share
-          </span>
-        </Button>
-      </Grid>
-      {/* Second Button */}
-      <Grid item>
-        <Button
-          variant="contained"
-          color="secondary"
-          sx={{
-            backgroundImage: "linear-gradient(to bottom,#6366f1,#4f46e5)",
-            boxShadow: "0 0 #0000",
-            textTransform: "none",
-          }}
-          onClick={createNewDoc}
-          endIcon={<PlusIcon />}
-        >
-          <span style={{ display: "flex", alignItems: "center", fontSize: 13 }}>
-            New
-          </span>
-        </Button>
-      </Grid>
-    </Grid>
-  );
   const AppBar = styled(MuiAppBar, {
     shouldForwardProp: (prop) => prop !== "open",
   })<AppBarProps>(({ theme, open }) => ({
@@ -270,7 +301,17 @@ export function MainHeader({ search, acc }: { search: Boolean; acc: Boolean }) {
       <MenuItem>
         <IconButton size="large" aria-label="show 4 new mails" color="inherit">
           <Stack direction="row" spacing={1}>
-            <Avatar sx={{ width: 32, height: 32, fontSize: 12 }}>ME</Avatar>
+            <Avatar
+              sx={{
+                width: 32,
+                height: 32,
+                fontSize: 12,
+                backgroundColor: "#F98181",
+                color: "#fff",
+              }}
+            >
+              ME
+            </Avatar>
           </Stack>
         </IconButton>
         <p>Account</p>
