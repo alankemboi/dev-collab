@@ -54,7 +54,6 @@ export function RandAvatarIcons() {
     const currentUser = JSON.parse(localStorage.getItem("allUsers")!);
     setUser(currentUser);
   }, []);
-  console.log(currentUser);
 
   const getRandomIconIndex = () => {
     return Math.floor(Math.random() * AvatarIcons.length);

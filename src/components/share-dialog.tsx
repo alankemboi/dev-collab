@@ -27,10 +27,15 @@ const emails = ["username@gmail.com", "user02@gmail.com"];
 export function ShareDialog(props: SimpleDialogProps) {
   const inputRef = React.useRef<HTMLInputElement | null>(null);
   const [copied, setCopied] = React.useState(false);
-
+  const [currentUser, setUser] = React.useState<any>();
   const router = useRouter();
   const path = router.asPath;
-
+  React.useEffect(() => {
+    const currentUser = JSON.parse(localStorage.getItem("currentUser")!);
+    const allUsers = JSON.parse(localStorage.getItem("allUsers")!);
+    setUser(allUsers[0]["name"]);
+  }, []);
+  console.log("sd", currentUser);
   // Ensure slug is an array and get the first element (path after domain)
   // console.log(slug);
   const handleCopy = () => {
@@ -61,7 +66,7 @@ export function ShareDialog(props: SimpleDialogProps) {
                 <PersonIcon />
               </Avatar>
             </ListItemIcon>
-            <ListItemText primary="Alan Kemboi (You)" />
+            <ListItemText primary={`${currentUser || "User"} (You)`} />
           </ListItem>
           <ListItem disableGutters>
             <TextField
@@ -69,7 +74,7 @@ export function ShareDialog(props: SimpleDialogProps) {
               fullWidth
               inputRef={inputRef}
               sx={{ border: 0 }}
-              value={`https://collab.kemboi.app/${path}`}
+              value={`https://collab.kemboi.app${path}`}
               InputProps={{
                 endAdornment: (
                   <InputAdornment position="end">
