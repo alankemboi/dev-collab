@@ -76,9 +76,6 @@ export function RandAvatarIcons() {
       </Avatar>
     );
   }
-  if (currentUser?.length == null) {
-    return;
-  }
   return (
     <AvatarGroup max={3} sx={{ fontSize: 12, width: 32, height: 32 }}>
       {currentUser?.map((user: { color: any }) => {
