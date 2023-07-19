@@ -201,7 +201,7 @@ const Editor: FC<IEditorProps> = ({ yDoc, provider }) => {
       </div>
       <Snackbar
         open={open}
-        autoHideDuration={6000} // Set the duration (in milliseconds) for how long the Snackbar is displayed
+        autoHideDuration={10000} // Set the duration (in milliseconds) for how long the Snackbar is displayed
         onClose={() => setOpen(!open)}
         anchorOrigin={{
           vertical: "bottom",
