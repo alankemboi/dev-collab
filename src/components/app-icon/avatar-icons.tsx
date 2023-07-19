@@ -1,6 +1,7 @@
 import * as React from "react";
 import { SvgIcon, Avatar, AvatarGroup } from "@mui/material";
 import { createShade } from "src/utility/create-shade";
+import { useRouter } from "next/router";
 const Cat = () => (
   <SvgIcon fill="#fff">
     <svg
@@ -47,7 +48,8 @@ const rand = Math.floor(Math.random() * AvatarIcons.length);
 const icon = AvatarIcons[rand];
 export function RandAvatarIcons() {
   const [currentUser, setUser] = React.useState<any>([]);
-
+  const router = useRouter();
+  const { pathname } = router;
   React.useEffect(() => {
     const currentUser = JSON.parse(localStorage.getItem("allUsers")!);
     setUser(currentUser);
@@ -57,8 +59,25 @@ export function RandAvatarIcons() {
   const getRandomIconIndex = () => {
     return Math.floor(Math.random() * AvatarIcons.length);
   };
+  if (pathname === "/document") {
+    const randomIconIndex = getRandomIconIndex();
+    const icon = AvatarIcons[randomIconIndex];
+    return (
+      <Avatar
+        sx={{
+          width: 32,
+          height: 32,
+          fontSize: 12,
+          padding: "2px",
+          backgroundColor: "#137333",
+        }}
+      >
+        {icon}
+      </Avatar>
+    );
+  }
   return (
-    <AvatarGroup max={2} >
+    <AvatarGroup max={2} sx={{ fontSize: 12, width: 32, height: 32 }}>
       {[1, 2, 3].map(() => {
         const randomIconIndex = getRandomIconIndex();
         const icon = AvatarIcons[randomIconIndex];
@@ -74,7 +93,7 @@ export function RandAvatarIcons() {
               border: `2px solid ${createShade("#FF0000", 0.1)}`,
             }}
           >
-            J
+            {icon}
           </Avatar>
         );
       })}
