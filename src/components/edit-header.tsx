@@ -57,7 +57,7 @@ export function EditHeader() {
           ></div>
           <button className="absolute top-0 bottom-0 left-0 right-0 flex w-full cursor-pointer items-center justify-center gap-1 bg-transparent duration-300 ease-out group-hover:scale-105">
             <span className="bg-get-pro-gradient bg-clip-text text-sm font-bold leading-5 text-transparent transition-all">
-              Get Scribe Pro
+              Get Pro
             </span>
             <svg
               aria-hidden="true"
