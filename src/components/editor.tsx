@@ -85,12 +85,7 @@ const getInitialUser = () => {
   );
 };
 
-// const getInitialUser = () => {
-//   return {
-//     name: nameGenerator(),
-//     color: colors[~~(Math.random() * colors.length)],
-//   };
-// };
+
 
 EditorView.prototype.updateState = function updateState(state) {
   // @ts-ignore

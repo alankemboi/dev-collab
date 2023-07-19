@@ -3,15 +3,11 @@ import {
   Card,
   styled,
   IconButton,
-  Paper,
   List,
   ListItem,
   ListItemText,
   ListItemIcon,
   Avatar,
-  Button,
-  CardActions,
-  TextField,
 } from "@mui/material";
 import { MainHeader } from "@components/header/header";
 import { EditorWrapper } from "@components/editor";
@@ -105,33 +101,6 @@ export default function DocumentEditPage() {
         </CommentButtonWrapper>
         {open && (
           <>
-            {/* <AddCommenWrapper>
-              <List>
-                <ListItem>
-                  <ListItemIcon>
-                    <AvatarWrapper>HR</AvatarWrapper>
-                  </ListItemIcon>
-                  <ListItemText primary="Join" secondary="" />
-                </ListItem>
-                <ListItem>
-                  <TextField
-                    label="Comment"
-                    id="standard-required"
-                    variant="standard"
-                  />
-                </ListItem>
-              </List>
-              <CardActions>
-                <CardActions>
-                  <Button size="small" variant="outlined">
-                    Comment
-                  </Button>
-                  <Button size="small" variant="outlined">
-                    Cancel
-                  </Button>
-                </CardActions>
-              </CardActions>
-            </AddCommenWrapper> */}
             <CommentBox>
               <List>
                 <ListItem>

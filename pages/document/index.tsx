@@ -1,26 +1,14 @@
 import { NewFile } from "@components/app-icon/file";
-import { DocList } from "@components/doc-page";
 import { GetStartedAccord } from "@components/get-started";
 import {
   Container,
   Card,
   CardContent,
   Typography,
-  Button,
-  CardActions,
+
   Box,
-  Drawer,
-  List,
-  Divider,
-  ListItem,
-  ListItemText,
-  ListItemIcon,
-  Toolbar,
-  ListItemButton,
   Link,
 } from "@mui/material";
-import InboxIcon from "@mui/icons-material/MoveToInbox";
-import MailIcon from "@mui/icons-material/Mail";
 import { ChevronRight } from "@mui/icons-material";
 import { nanoid } from "nanoid";
 
@@ -42,7 +30,6 @@ export default function DocumentPage() {
       }}
     >
       <GetStartedAccord />
-      {/* <DocList /> */}
       <Box
         sx={{ display: "flex", width: "100%", flexDirection: "column", mt: 4 }}
       >
