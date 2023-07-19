@@ -45,6 +45,7 @@ import { authProvider } from "src/authProvider";
 import { ShareDialog } from "@components/share-dialog";
 import { supabaseClient } from "src/utility";
 import { createShade } from "src/utility/create-shade";
+import { RandAvatarIcons } from "@components/app-icon/avatar-icons";
 
 interface IUser {
   id: string;
@@ -171,17 +172,7 @@ export function MainHeader({ search, acc }: { search: Boolean; acc: Boolean }) {
       <Grid container spacing={2} justifyContent="center">
         <Grid item>
           <Stack direction="row" spacing={1}>
-            <Avatar
-              sx={{
-                width: 32,
-                height: 32,
-                fontSize: 12,
-                backgroundColor: "teal",
-                border: `2px solid ${createShade("#FF0000", 0.1)}`,
-              }}
-            >
-              ME
-            </Avatar>
+            <RandAvatarIcons />
           </Stack>
         </Grid>
         {/* First Button */}

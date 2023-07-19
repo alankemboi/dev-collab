@@ -198,17 +198,22 @@ const Editor: FC<IEditorProps> = ({ yDoc, provider }) => {
         <Chip icon={<FaceIcon />} label={currentUser.name} variant="filled" />
       </div>
       <Container
-        sx={{
+        sx={(theme) => ({
           backgroundColor: "white",
           width: "210mm",
           height: "297mm",
-          padding: "24px",
+          // padding: "24px",
           display: "flex",
           flexDirection: "column",
           border: "1px solid #cacaca",
           gap: "24px",
           mb: "24px",
-        }}
+          padding: theme.spacing(2),
+          [theme.breakpoints.down("sm")]: {
+            width: "100%", // Adjust the width for small devices
+            padding: theme.spacing(1),
+          },
+        })}
       >
         <RichTextEditor editor={editor} sx={{ border: 0, height: "100%" }}>
           <RichTextEditor.Toolbar

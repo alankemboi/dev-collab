@@ -17,10 +17,12 @@ import {
   ListItemIcon,
   Toolbar,
   ListItemButton,
+  Link,
 } from "@mui/material";
 import InboxIcon from "@mui/icons-material/MoveToInbox";
 import MailIcon from "@mui/icons-material/Mail";
 import { ChevronRight } from "@mui/icons-material";
+import { nanoid } from "nanoid";
 
 export default function DocumentPage() {
   return (
@@ -90,9 +92,23 @@ export default function DocumentPage() {
           Get started by creating files
         </Typography>
         <div style={{ margin: "0 auto" }}>
-          <Button size="small" sx={{ width: "auto" }}>
-            Create a project
-          </Button>
+          <Link
+            // component="button"
+            variant="body2"
+            // onClick={() => {}}
+            sx={{
+              fontSize: 14,
+              color: "indigo",
+              textAlign: "center",
+              whiteSpace: "no-wrap",
+              fontWeight: 700,
+              lineHeight: 1.5,
+              mb: 2,
+            }}
+            href={`/document/${nanoid(32)}/edit`}
+          >
+            Create a new file
+          </Link>
         </div>
       </Box>
     </Container>

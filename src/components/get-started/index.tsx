@@ -67,7 +67,7 @@ const GetStartedAccord = () => {
         </AccordionSummary>
         <AccordionDetails>
           <Grid container rowSpacing="10px" columnSpacing={1}>
-            <Grid item xs={6}>
+            <Grid item sm={12} md={6}>
               <List>
                 <Paper style={{ ...styles.paper, ...styles.success }}>
                   <ListItem>
@@ -92,7 +92,7 @@ const GetStartedAccord = () => {
                 </Paper>
               </List>
             </Grid>
-            <Grid item xs={6}>
+            <Grid item sm={12} md={6}>
               <List>
                 <Paper
                   style={styles.paper}
@@ -124,7 +124,7 @@ const GetStartedAccord = () => {
                 </Paper>
               </List>
             </Grid>
-            <Grid item xs={6}>
+            <Grid item sm={12} md={6}>
               <List>
                 <Paper style={styles.paper}>
                   <ListItem>
@@ -146,7 +146,7 @@ const GetStartedAccord = () => {
                 </Paper>
               </List>
             </Grid>
-            <Grid item xs={6}>
+            <Grid item sm={12} md={6}>
               <List>
                 <Paper style={styles.paper}>
                   <ListItem>
