@@ -27,13 +27,14 @@ const emails = ["username@gmail.com", "user02@gmail.com"];
 export function ShareDialog(props: SimpleDialogProps) {
   const inputRef = React.useRef<HTMLInputElement | null>(null);
   const [copied, setCopied] = React.useState(false);
-  const [currentUser, setUser] = React.useState<any>();
+  const [currentUser, setUser] = React.useState<any>("Anonymous Jackal");
   const router = useRouter();
   const path = router.asPath;
   React.useEffect(() => {
     const currentUser = JSON.parse(localStorage.getItem("currentUser")!);
     const allUsers = JSON.parse(localStorage.getItem("allUsers")!);
-    setUser(allUsers[0]["name"] || "Anonymous");
+    if (allUsers && allUsers.length > 0)
+      setUser(allUsers[0]["name"] || "Anonymous");
   }, []);
   console.log("sd", currentUser);
   // Ensure slug is an array and get the first element (path after domain)
