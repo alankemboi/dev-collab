@@ -32,10 +32,9 @@ export function ShareDialog(props: SimpleDialogProps) {
   const [copied, setCopied] = React.useState(false);
 
   const router = useRouter();
-  const { slug } = router.query;
+  const path = router.asPath;
 
   // Ensure slug is an array and get the first element (path after domain)
-  const pathAfterDomain = Array.isArray(slug) ? slug[1] : "";
   // console.log(slug);
   const handleCopy = () => {
     if (inputRef && inputRef.current) {
@@ -73,7 +72,7 @@ export function ShareDialog(props: SimpleDialogProps) {
               fullWidth
               inputRef={inputRef}
               sx={{ border: 0 }}
-              value={`https://collab.kemboi.app/${1}}/edit`}
+              value={`https://collab.kemboi.app/${path}`}
               InputProps={{
                 endAdornment: (
                   <InputAdornment position="end">

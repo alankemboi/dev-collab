@@ -76,9 +76,12 @@ export function RandAvatarIcons() {
       </Avatar>
     );
   }
+  if (currentUser?.length == null) {
+    return;
+  }
   return (
-    <AvatarGroup max={2} sx={{ fontSize: 12, width: 32, height: 32 }}>
-      {[1, 2, 3].map(() => {
+    <AvatarGroup max={3} sx={{ fontSize: 12, width: 32, height: 32 }}>
+      {currentUser?.map((user: { color: any }) => {
         const randomIconIndex = getRandomIconIndex();
         const icon = AvatarIcons[randomIconIndex];
 
@@ -89,7 +92,7 @@ export function RandAvatarIcons() {
               height: 32,
               fontSize: 12,
               padding: "2px",
-              backgroundColor: "#137333",
+              backgroundColor: user.color || "#137333",
               border: `2px solid ${createShade("#FF0000", 0.1)}`,
             }}
           >

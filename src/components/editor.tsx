@@ -8,12 +8,10 @@ import Highlight from "@tiptap/extension-highlight";
 import TaskItem from "@tiptap/extension-task-item";
 import TaskList from "@tiptap/extension-task-list";
 import { EditorView } from "prosemirror-view";
-import nameGenerator from "src/utility/name-generator";
 import { RichTextEditor, Link } from "@mantine/tiptap";
 import StarterKit from "@tiptap/starter-kit";
-import { Chip, Container } from "@mui/material";
+import { Chip, Container, Snackbar, Alert } from "@mui/material";
 import FaceIcon from "@mui/icons-material/Face";
-
 import React, { FC, useCallback, useEffect, useMemo, useState } from "react";
 import * as Y from "yjs";
 
@@ -58,7 +56,10 @@ const getRandomElement = (list: any | any[]) =>
   list[Math.floor(Math.random() * list.length)];
 
 const getRandomRoom = () => {
-  const roomNumbers = "def".trim()?.split(",") ?? [10, 11, 12];
+  const variables =
+    "Enchanted, Secret, Zen, Galactic, Steampunk,Nexus,Time,Crystal,Nebula,Dragon's,Underwater";
+
+  const roomNumbers = variables.trim()?.split(",") ?? [10, 11, 12];
 
   return getRandomElement(roomNumbers.map((number: any) => `rooms.${number}`));
 };
@@ -131,7 +132,7 @@ const Editor: FC<IEditorProps> = ({ yDoc, provider }) => {
   );
   const [status, setStatus] = useState("connecting");
   const [currentUser, setCurrentUser] = useState(getInitialUser);
-
+  const [open, setOpen] = React.useState(true);
   const editor = useEditor({
     extensions: [
       StarterKit.configure({
@@ -195,8 +196,34 @@ const Editor: FC<IEditorProps> = ({ yDoc, provider }) => {
         <div className={`editor__status editor__status--${status}`}>
           <Chip label={status} variant="filled" />
         </div>
+
         <Chip icon={<FaceIcon />} label={currentUser.name} variant="filled" />
       </div>
+      <Snackbar
+        open={open}
+        autoHideDuration={6000} // Set the duration (in milliseconds) for how long the Snackbar is displayed
+        onClose={() => setOpen(!open)}
+        anchorOrigin={{
+          vertical: "bottom",
+          horizontal: "left",
+        }}
+      >
+        {/* Snackbar Content */}
+        <Alert
+          // elevation={6}
+          variant="outlined"
+          onClose={() => setOpen(!open)}
+          severity="info" // You can use "error", "warning", "info", or "success"
+        >
+          {status === "connected"
+            ? `${editor?.storage.collaborationCursor.users.length} user${
+                editor?.storage.collaborationCursor.users.length === 1
+                  ? ""
+                  : "s"
+              } online in ${room}`
+            : "offline"}
+        </Alert>
+      </Snackbar>
       <Container
         sx={(theme) => ({
           backgroundColor: "white",
