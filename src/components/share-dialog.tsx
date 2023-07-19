@@ -33,7 +33,7 @@ export function ShareDialog(props: SimpleDialogProps) {
   React.useEffect(() => {
     const currentUser = JSON.parse(localStorage.getItem("currentUser")!);
     const allUsers = JSON.parse(localStorage.getItem("allUsers")!);
-    setUser(allUsers[0]["name"]);
+    setUser(allUsers[0]["name"] || "Anonymous");
   }, []);
   console.log("sd", currentUser);
   // Ensure slug is an array and get the first element (path after domain)
