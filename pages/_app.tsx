@@ -36,7 +36,7 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout): JSX.Element {
     () =>
       createTheme({
         palette: {
-          mode: prefersDarkMode ? "light" : "light",
+          mode: "light",
         },
       }),
     [prefersDarkMode]

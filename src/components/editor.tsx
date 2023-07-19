@@ -57,7 +57,7 @@ const getRandomElement = (list: any | any[]) =>
 
 const getRandomRoom = () => {
   const variables =
-    "Enchanted, Secret, Zen, Galactic, Steampunk,Nexus,Time,Crystal,Nebula,Dragon's,Underwater";
+    "Zen,Steampunk,Nebula";
 
   const roomNumbers = variables.trim()?.split(",") ?? [10, 11, 12];
 
