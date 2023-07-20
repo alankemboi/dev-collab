@@ -7,9 +7,17 @@ import {
   Typography,
   Box,
   Link,
+  List,
+  ListItem,
+  Avatar,
+  ListItemAvatar,
+  ListItemText,
+  IconButton,
 } from "@mui/material";
-import { ChevronRight } from "@mui/icons-material";
+import { ChevronRight, Folder } from "@mui/icons-material";
+import ArrowRightIcon from "@mui/icons-material/ArrowRight";
 import { nanoid } from "nanoid";
+import { blue } from "@mui/material/colors";
 
 export default function DocumentPage() {
   return (
@@ -19,7 +27,7 @@ export default function DocumentPage() {
         display: "flex", // Use Flexbox display
         // justifyContent: "center", // Center the items horizontally
         // alignItems: "center", // Center the items vertically
-       // width: "90%", // Set the width to 90%
+        // width: "90%", // Set the width to 90%
         margin: "0px auto", // Center the container horizontally
         //mt: 8,
         minHeight: "100vh",
@@ -29,6 +37,28 @@ export default function DocumentPage() {
       }}
     >
       <GetStartedAccord />
+      <Link
+        component="a"
+        href="/document/edit"
+        sx={{ color: "#000", textDecoration: "none" }}
+      >
+        <List>
+          <ListItem
+            secondaryAction={
+              <IconButton edge="end" aria-label="delete">
+                <ArrowRightIcon />
+              </IconButton>
+            }
+          >
+            <ListItemAvatar>
+              <Avatar sx={{ bgcolor: blue[500] }}>
+                <Folder />
+              </Avatar>
+            </ListItemAvatar>
+            <ListItemText primary="Nebula" secondary="Common Room" />
+          </ListItem>
+        </List>
+      </Link>
       <Box
         sx={{ display: "flex", width: "100%", flexDirection: "column", mt: 4 }}
       >

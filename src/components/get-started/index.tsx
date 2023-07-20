@@ -139,7 +139,7 @@ const GetStartedAccord = () => {
                       </Avatar>
                     </ListItemIcon>
                     <ListItemText
-                      primary="Create a project"
+                      primary="Invite your team"
                       secondary="The magic engine that powers Dev.Collab."
                     />
                   </ListItem>
