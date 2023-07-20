@@ -2,10 +2,11 @@ import { NextApiRequest, NextApiResponse } from "next";
 import { supabaseClient } from "src/utility/supabaseClient";
 
 export default function handler(req: NextApiRequest, res: NextApiResponse) {
-  console.log(req.body);
+  // Create a variable called data, which uses the Supabase client to fetch all countries from the database.
+  // The data variable is a Supabase response object, which contains an array of countries.
   const data = supabaseClient.from("countries").select("*");
-  console.log(data);
+  // Send the data variable to the client.
   res.status(200).json({
-    message: "Hello World",
+    countries: data,
   });
 }

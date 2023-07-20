@@ -21,6 +21,7 @@ import { useRouter } from "next/router";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import customTitleHandler from "src/utility/customTitleHandler";
+import { Analytics } from "@vercel/analytics/react";
 export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
   noLayout?: boolean;
 };
@@ -48,6 +49,7 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout): JSX.Element {
     }
     return (
       <ThemeProvider theme={theme}>
+        <Analytics />
         <MainHeader search acc />
         <Component {...pageProps} />
       </ThemeProvider>
