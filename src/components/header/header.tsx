@@ -44,7 +44,6 @@ import { useDataProvider } from "@refinedev/core";
 import { authProvider } from "src/authProvider";
 import { ShareDialog } from "@components/share-dialog";
 import { supabaseClient } from "src/utility";
-import { createShade } from "src/utility/create-shade";
 import { RandAvatarIcons } from "@components/app-icon/avatar-icons";
 
 interface IUser {
