@@ -5,7 +5,6 @@ import {
   Card,
   CardContent,
   Typography,
-
   Box,
   Link,
 } from "@mui/material";
@@ -20,11 +19,11 @@ export default function DocumentPage() {
         display: "flex", // Use Flexbox display
         // justifyContent: "center", // Center the items horizontally
         // alignItems: "center", // Center the items vertically
-        width: "90%", // Set the width to 90%
-        margin: "0 auto", // Center the container horizontally
-        mt: 8,
+       // width: "90%", // Set the width to 90%
+        margin: "0px auto", // Center the container horizontally
+        //mt: 8,
         minHeight: "100vh",
-        backgroundColor: "white",
+        backgroundColor: "#fff",
         flexDirection: "column",
         padding: "16px",
       }}

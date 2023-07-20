@@ -56,8 +56,7 @@ const getRandomElement = (list: any | any[]) =>
   list[Math.floor(Math.random() * list.length)];
 
 const getRandomRoom = () => {
-  const variables =
-    "Zen,Steampunk,Nebula";
+  const variables = "Zen,Steampunk,Nebula";
 
   const roomNumbers = variables.trim()?.split(",") ?? [10, 11, 12];
 
@@ -84,8 +83,6 @@ const getInitialUser = () => {
     }
   );
 };
-
-
 
 EditorView.prototype.updateState = function updateState(state) {
   // @ts-ignore
@@ -189,7 +186,7 @@ const Editor: FC<IEditorProps> = ({ yDoc, provider }) => {
     <div style={{ height: "100%", margin: "0 auto" }}>
       <div className="editor__footer" style={{ border: 0 }}>
         <div className={`editor__status editor__status--${status}`}>
-          <Chip label={status} variant="filled" />
+          <Chip label={status} variant="filled" color="#000" />
         </div>
 
         <Chip icon={<FaceIcon />} label={currentUser.name} variant="filled" />

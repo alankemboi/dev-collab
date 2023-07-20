@@ -84,7 +84,7 @@ export default function DocumentEditPage() {
         sx={{
           width: "100%",
           minHeight: "100vh",
-          backgroundColor: "rgb(249 251 253)",
+          backgroundColor: "#fff",
           display: "flex",
           flexDirection: "column",
           alignItems: "start",
