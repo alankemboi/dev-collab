@@ -21,7 +21,6 @@ import { useRouter } from "next/router";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import customTitleHandler from "src/utility/customTitleHandler";
-import { Button } from "@mui/material";
 export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
   noLayout?: boolean;
 };
@@ -31,20 +30,16 @@ type AppPropsWithLayout = AppProps & {
 };
 
 function MyApp({ Component, pageProps }: AppPropsWithLayout): JSX.Element {
-  const [mode, setMode] = React.useState(() => {
-    if (typeof window !== "undefined") {
-      return localStorage.getItem("mode") ?? "light";
-    }
-    return "light";
-  });
+  const prefersDarkMode = useMediaQuery("(prefers-color-scheme: light)");
+
   const theme = React.useMemo(
     () =>
       createTheme({
         palette: {
-          mode,
+          mode: "light",
         },
       }),
-    []
+    [prefersDarkMode]
   );
 
   const renderComponent = () => {
@@ -90,7 +85,6 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout): JSX.Element {
               }}
             >
               {renderComponent()}
-
               <RefineKbar />
               <UnsavedChangesNotifier />
               <DocumentTitleHandler handler={customTitleHandler} />
