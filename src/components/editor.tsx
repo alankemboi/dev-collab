@@ -186,7 +186,7 @@ const Editor: FC<IEditorProps> = ({ yDoc, provider }) => {
     <div style={{ height: "100%", margin: "0 auto" }}>
       <div className="editor__footer" style={{ border: 0 }}>
         <div className={`editor__status editor__status--${status}`}>
-          <Chip label={status} variant="filled" color="#000" />
+          <Chip label={status} variant="filled" />
         </div>
 
         <Chip icon={<FaceIcon />} label={currentUser.name} variant="filled" />
