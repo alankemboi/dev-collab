@@ -1,5 +1,8 @@
 @import url(https://cdn.jsdelivr.net/gh/alankemboi/alankemboi/app.css);
 
+* {
+  font-family: Sora !important;
+}
 /* Basic editor styles */
 .tiptap {
   > * + * {
@@ -18,6 +21,7 @@
   h5,
   h6 {
     line-height: 1.1;
+    font-family: Sora !important;
   }
 
   code {
@@ -214,4 +218,8 @@
   .homepage_header-nav-container {
     display: none;
   }
+}
+
+.ProseMirror {
+  font-family: Sora !important;
 }
