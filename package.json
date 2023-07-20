@@ -47,6 +47,7 @@
     "@tiptap/pm": "^2.0.3",
     "@tiptap/react": "^2.0.3",
     "@tiptap/starter-kit": "^2.0.3",
+    "@vercel/analytics": "^1.0.1",
     "nanoid": "^4.0.2",
     "next": "^13.0.6",
     "next-i18next": "^8.9.0",
